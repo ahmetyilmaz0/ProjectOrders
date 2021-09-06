@@ -1,0 +1,45 @@
+<div class="container">
+  <br />
+
+  <div class="well">
+    <div class="form-group">
+      <label for="orderID">Search Books</label>
+      <input id="orderID" class="form-control" [(ngModel)]="filter.id" (change)="onChange()">
+    </div>
+  </div>
+  <button class="btn btn-default" (click)="resetFilter()">Reset List</button>
+  <br />
+  <div class="row">
+    <div class="col">
+      <h3>Order List</h3>
+    </div>
+    <div class="col text-right">
+      <a href="#" routerLink="/orders/create/" class="btn btn-success btn-sm">Create New</a>
+    </div>
+  </div>
+  <br />
+  <table class="table table-bordered table-sm">
+    <tr>
+      <th>Order Number</th>
+      <th>Order</th>
+      <th>Description</th>
+      <th>Order Detail</th>
+      <th>Payment</th>
+      <th>Order Num</th>
+      <th width="200px"></th>
+    </tr>
+    <tr *ngFor="let order of orders">
+      <td>{{ order.orderID }}</td>
+      <td>{{ order.orderName }}</td>
+      <td>{{ order.description }}</td>
+      <td>{{ order.orderDetails.orderDetailID }}</td>
+      <td>{{ order.orderDetails.payment }}</td>
+      <td>{{ order.orderDetails.orderID }}</td>
+      <td class="text-right">
+        <a href="#" [routerLink]="['/orders/', order.orderID, 'details']" class="btn btn-info btn-sm">View</a>&nbsp;
+        <a href="#" [routerLink]="['/orders/', order.orderID, 'update']" class="btn btn-primary btn-sm">Update</a>&nbsp;
+        <button type="button" (click)="onDelete(order.orderID)" class="btn btn-danger btn-sm">Delete</button>&nbsp;
+      </td>
+    </tr>
+  </table>
+</div>

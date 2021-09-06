@@ -1,0 +1,85 @@
+<div class="container">
+  <br />
+  <div class="row">
+    <div class="col">
+      <h3>Update Order</h3>
+    </div>
+    <div class="col text-right">
+      <a href="#" routerLink="/orders/list" class="btn btn-secondary btn-sm">Back To Order List</a>
+    </div>
+  </div>
+  <br />
+  <form novalidate #form="ngForm" (submit)="onSubmit(form)">
+    <div class="form-group">
+      <label>Order No:</label>
+      <input class="form-control" disabled
+             value="{{ order?.orderID }}"
+             placeholder="{{ order?.orderID }}"
+             name="orderID"
+             #orderID="ngModel"
+             [(ngModel)]="service.formData.orderID"
+             required />
+    </div>
+    <div class="form-group">
+      <label for="orderName">Order</label>
+      <input class="form-control"
+             value="{{order?.orderName}}"
+             placeholder="{{ order?.orderName }}"
+             name="orderName"
+             #orderName="ngModel"
+             [(ngModel)]="service.formData.orderName"
+             required />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input class="form-control"
+             value="{{order?.description}}"
+             placeholder="{{order?.description}}"
+             name="description"
+             #description="ngModel"
+             [(ngModel)]="service.formData.description"
+             required/>
+    </div>
+    <div class="form-group">
+      <label for="orderDetails.payment">Payment</label>
+      <input class="form-control form-control-lg"
+             value="{{ order?.orderDetails.payment }}"
+             placeholder="{{ order?.orderDetails.payment }}"
+             name="payment"
+             #payment="ngModel"
+             [(ngModel)]="service.formDataObj.payment"
+             required />
+    </div>
+    <div class="form-group">
+    <label>``</label>
+    <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+  </div>
+  </form>
+</div>
+
+
+<!--<div class="container">
+  <br />
+  <h3>Order Details</h3>
+  <br />
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col">
+          <h4>Order Number: {{ order.orderID }}</h4>
+        </div>
+        <div class="col text-right">
+          <a href="#" routerLink="/orders/list" class="btn btn-secondary btn-sm">Back To Orders List</a>
+        </div>
+      </div>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><b>Order Number:</b> {{ order.orderID }}</li>
+      <li class="list-group-item"><b>Order:</b> {{ order.orderName }}</li>
+      <li class="list-group-item"><b>Description:</b> {{ order.description }}</li>
+      <li class="list-group-item"><b>Detail Number:</b> {{ order.orderDetails.orderDetailID }}</li>
+      <li class="list-group-item"><b>Payment:</b> {{ order.orderDetails.payment }}</li>
+      <li class="list-group-item"><b>Detail Order Number:</b> {{ order.orderDetails.orderID }}</li>
+    </ul>
+  </div>
+</div>-->
